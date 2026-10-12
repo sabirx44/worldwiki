@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Worldwiki: a reference desk for an invented world.
+   Sage-grey paper, near-black ink, one oxblood accent for links between pages. */
+:root {
+  --paper: #eef0ea;
+  --card: #ffffff;
+  --ink: #1a1d21;
+  --muted: #5c6370;
+  --line: #d4d8ce;
+  --link: #8e2f3a;
+  --link-soft: #f3e3e5;
+  --missing: #9a6a00;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-link: var(--link);
+  --color-link-soft: var(--link-soft);
+  --color-missing: var(--missing);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-newsreader);
+}
+
+html { background: var(--paper); color: var(--ink); }
+body { font-family: var(--font-geist-sans), system-ui, sans-serif; }
+
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+.wikilink {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.wikilink:hover { background: var(--link-soft); }
+.wikilink[data-missing] { color: var(--missing); text-decoration-style: dashed; }
+
+/* Tiptap editor surface */
+.tiptap { outline: none; min-height: 14rem; line-height: 1.7; }
+.tiptap p { margin: 0 0 0.9em; }
+.tiptap h2 { font-family: var(--font-newsreader); font-size: 1.4rem; margin: 1.2em 0 0.4em; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
