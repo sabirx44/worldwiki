@@ -7,8 +7,8 @@ export default defineConfig({
   timeout: 30_000,
   use: { baseURL: process.env.E2E_BASE_URL ?? "http://localhost:3000" },
   projects: [
-    { name: "desktop", use: { ...devices["Desktop Chrome"] } },
-    { name: "phone", use: { ...devices["Pixel 7"] } },
+    { name: "desktop", use: { ...devices["Desktop Chrome"], channel: process.env.CI ? undefined : "chrome" } },
+    { name: "phone", use: { ...devices["Pixel 7"], channel: process.env.CI ? undefined : "chrome" } },
   ],
   webServer: process.env.E2E_BASE_URL
     ? undefined

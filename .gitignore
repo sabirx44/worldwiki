@@ -42,3 +42,5 @@ yarn-error.log*
 next-env.d.ts
 install.log
 supabase/seed.local.sql
+test-results/
+playwright-report/
