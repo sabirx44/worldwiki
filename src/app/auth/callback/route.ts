@@ -5,10 +5,13 @@ import { supabaseServer } from "@/lib/supabase/server";
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
-  if (code) {
-    const db = await supabaseServer();
-    const { error } = await db.auth.exchangeCodeForSession(code);
-    if (!error) return NextResponse.redirect(`${origin}/`);
-  }
-  return NextResponse.redirect(`${origin}/login?error=link`);
+  const failed = (reason: string) => {
+    console.error("[auth/callback]", reason);
+    return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent(reason)}`);
+  };
+  if (!code) return failed(searchParams.get("error_description") ?? "missing code");
+  const db = await supabaseServer();
+  const { error } = await db.auth.exchangeCodeForSession(code);
+  if (error) return failed(error.message);
+  return NextResponse.redirect(`${origin}/`);
 }
