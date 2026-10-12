@@ -63,7 +63,11 @@ export function plainText(doc: DocNode | null | undefined, max = 240): string {
   };
   if (doc) walk(doc);
   const s = parts.join("").replace(/\s+/g, " ").trim();
-  return s.length > max ? s.slice(0, max - 1).trimEnd() + "…" : s;
+  if (s.length <= max) return s;
+  // Cut at the last word boundary so previews never end mid-word.
+  const cut = s.slice(0, max);
+  const space = cut.lastIndexOf(" ");
+  return (space > max * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,.;:]+$/, "") + "…";
 }
 
 /** Characters whose bodies link to `slug`. */

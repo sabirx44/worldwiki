@@ -60,14 +60,16 @@ export function FamilyTree({ worldSlug, people, relations, focus }: { worldSlug:
 
   if (!people.length) return <p className="text-muted">No characters yet.</p>;
   return (
-    <div className="h-[460px] w-full overflow-hidden rounded-xl border border-line bg-card" role="figure" aria-label="Family tree">
+    <div className="h-[380px] w-full overflow-hidden rounded-xl border border-line bg-card sm:h-[460px]" role="figure" aria-label="Family tree">
       <ReactFlow
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
         fitView
-        fitViewOptions={{ padding: 0.15 }}
+        fitViewOptions={{ padding: 0.15, minZoom: 0.55 }}
         minZoom={0.3}
+        panOnScroll={false}
+        preventScrolling={false}
         nodesConnectable={false}
         proOptions={{ hideAttribution: true }}
         onNodeClick={(_, n) => {
@@ -76,7 +78,7 @@ export function FamilyTree({ worldSlug, people, relations, focus }: { worldSlug:
         }}
       >
         <Background gap={24} color="#e3e6df" />
-        <Controls showInteractive={false} />
+        <Controls showInteractive={false} position="top-right" />
       </ReactFlow>
     </div>
   );

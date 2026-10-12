@@ -35,7 +35,7 @@ export default async function WorldPage({ params }: Props) {
       <section className="mt-10" aria-labelledby="tree">
         <h2 id="tree" className="mb-3 font-display text-2xl">Family tree</h2>
         <FamilyTree worldSlug={world.slug} people={characters} relations={relations} />
-        <p className="mt-2 text-xs text-muted">Solid lines: parent to child. Dashed red: marriage. Click anyone to open their page.</p>
+        <p className="mt-2 text-xs text-muted">Solid lines: parent to child. Dashed red: marriage. Drag to move around, pinch or use the buttons to zoom, and tap anyone to open their page.</p>
       </section>
 
       <section className="mt-12" aria-labelledby="index">

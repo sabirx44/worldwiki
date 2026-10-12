@@ -79,3 +79,11 @@ describe("family tree", () => {
     expect(() => layout(people.slice(0, 2), bad)).not.toThrow();
   });
 });
+
+describe("plainText previews", () => {
+  it("never cuts a word in half", () => {
+    const text = plainText(doc("He taught Ren Vell to sail and never forgave himself for the storm."), 30);
+    expect(text).toBe("He taught Ren Vell to sail…");
+    expect(plainText(doc("Lends to captains and kings alike, again."), 34)).toBe("Lends to captains and kings…");
+  });
+});
