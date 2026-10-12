@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 /* Worldwiki: a reference desk for an invented world.
-   Sage-grey paper, near-black ink, one oxblood accent for links between pages. */
+   Sage-grey paper by day, a lamp-lit study by night; one accent for links between pages.
+   It follows the reader's system setting, the way most writers keep their tools. */
 :root {
+  color-scheme: light dark;
   --paper: #eef0ea;
   --card: #ffffff;
   --ink: #1a1d21;
@@ -11,6 +13,22 @@
   --link: #8e2f3a;
   --link-soft: #f3e3e5;
   --missing: #9a6a00;
+  --edge: #8a9087;
+  --grid: #e3e6df;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1114;
+    --card: #171a1f;
+    --ink: #ece9e2;
+    --muted: #a3a7ae;
+    --line: #2a2f37;
+    --link: #e08a94;
+    --link-soft: #3a2026;
+    --missing: #e0b155;
+    --edge: #5d636c;
+    --grid: #22262c;
+  }
 }
 
 @theme inline {
@@ -22,13 +40,15 @@
   --color-link: var(--link);
   --color-link-soft: var(--link-soft);
   --color-missing: var(--missing);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-newsreader);
 }
 
 html { background: var(--paper); color: var(--ink); }
-body { font-family: var(--font-geist-sans), system-ui, sans-serif; }
+body { font-family: var(--font-space-grotesk), system-ui, sans-serif; }
+
+.react-flow { --xy-background-color: var(--card); --xy-controls-button-background-color: var(--card); --xy-controls-button-border-color: var(--line); --xy-controls-button-color: var(--ink); }
 
 :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 

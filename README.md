@@ -2,7 +2,7 @@
 
 A shared wiki for invented worlds. Each character is a page; typing `[[Name]]` links pages together, and the family tree and backlinks are built from the data. A world can be private, shared with co-writers, or published for readers.
 
-**Live demo:** https://vvd.sabirhussein.com (published world: *The Salt Crown*)
+**Live demo:** https://worldwiki.sabirhussein.com (published world: *The Salt Crown*)
 
 ## What it shows
 

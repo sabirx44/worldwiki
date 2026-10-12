@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { Geist_Mono, Newsreader, Space_Grotesk } from "next/font/google";
 import { currentUser } from "@/lib/data";
 import { hasSupabase } from "@/lib/supabase/server";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin", "cyrillic"] });
+const spaceGrotesk = Space_Grotesk({ variable: "--font-space-grotesk", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 const newsreader = Newsreader({ variable: "--font-newsreader", subsets: ["latin"], style: ["normal", "italic"] });
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const user = hasSupabase() ? await currentUser() : null;
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} antialiased`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${geistMono.variable} ${newsreader.variable} antialiased`}>
       <body className="min-h-dvh flex flex-col">
         <header className="border-b border-line">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">

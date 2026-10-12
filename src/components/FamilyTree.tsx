@@ -53,7 +53,7 @@ export function FamilyTree({ worldSlug, people, relations, focus }: { worldSlug:
           style: { stroke: "var(--link)", strokeWidth: 1.5, strokeDasharray: "4 3" } };
       }
       return { id: `p${i}`, source: r.from_id, target: r.to_id, sourceHandle: "bottom", targetHandle: "top", type: "smoothstep",
-        style: { stroke: "#8a9087", strokeWidth: 1.25 } };
+        style: { stroke: "var(--edge)", strokeWidth: 1.25 } };
     });
     return { nodes, edges };
   }, [people, relations, focus]);
@@ -65,6 +65,7 @@ export function FamilyTree({ worldSlug, people, relations, focus }: { worldSlug:
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
+        colorMode="system"
         fitView
         fitViewOptions={{ padding: 0.15, minZoom: 0.55 }}
         minZoom={0.3}
@@ -77,7 +78,7 @@ export function FamilyTree({ worldSlug, people, relations, focus }: { worldSlug:
           if (p) router.push(`/w/${worldSlug}/${p.slug}`);
         }}
       >
-        <Background gap={24} color="#e3e6df" />
+        <Background gap={24} color="var(--grid)" />
         <Controls showInteractive={false} position="top-right" />
       </ReactFlow>
     </div>
