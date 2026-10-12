@@ -18,7 +18,7 @@ function LoginForm() {
     setState("sending");
     const { error } = await supabaseBrowser().auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${location.origin}/auth/callback` },
+      options: { emailRedirectTo: `${location.origin}/auth/done` },
     });
     if (error) { setError(error.message); setState("error"); } else setState("sent");
   }
